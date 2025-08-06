@@ -1044,4 +1044,30 @@ umer_periodic_table = {
         "category": "Noble Gas",
         "state": "Unknown"
     }
-})
+}# Sample periodic_table dictionary must already be defined (as we've built together)
+
+def search_element(query):
+    query = str(query).lower()
+    for symbol, element in periodic_table.items():
+        if (
+            symbol.lower() == query
+            or element["name"].lower() == query
+            or str(element["atomic_number"]) == query
+            or str(element["atomic_mass"]).startswith(query)
+        ):
+            print(f"Element Found:")
+            print(f"  Symbol       : {symbol}")
+            print(f"  Name         : {element['name']}")
+            print(f"  Atomic Number: {element['atomic_number']}")
+            print(f"  Atomic Mass  : {element['atomic_mass']}")
+            print(f"  Group        : {element['group']}")
+            print(f"  Period       : {element['period']}")
+            print(f"  Category     : {element['category']}")
+            print(f"  State        : {element['state']}")
+            return
+    print("Element not found.")
+while True:
+    user_input = input("\nEnter element symbol, name, atomic number, or mass (or 'exit' to quit): ")
+    if user_input.lower() == 'exit':
+        break
+    search_element(user_input)
