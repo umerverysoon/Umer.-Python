@@ -55,13 +55,76 @@ def calculator():
                         result **= num
 
                 print(f"{' '.join(map(str, numbers))} = {result}")
-            except Exception as e:
-                print(f"Operation failed! ({e})")
+             # Import
+from tkinter.constants import NUMERIC
 
-            print("Developed By: G/yes")
+# Function definition
+def calculator():
+    print("Standard Calculator")
+    
+    try:
+        while True:
+            # Get operator input
+            op = input("Enter the operator (/ , * , - , + , ** ) or type 'exit' to quit: ").strip()
+            if op.lower() == "exit":
+                print("Exiting calculator...")
+                break
+
+            # Check if operator is valid
+            list_op = ["/", "*", "-", "+", "**"]
+            if op not in list_op:
+                print("Please enter a valid operator.")
+                continue
+
+            numbers = []
+            while True:
+                number = input("Enter a number or '=' to calculate: ").strip()
+
+                if number == "=":
+                    if len(numbers) < 2:
+                        print("Please enter at least 2 numbers.")
+                        continue
+                    break
+
+                try:
+                    num = float(number)
+                    numbers.append(num)
+                except ValueError:
+                    print("Please enter a valid number.")
+                    continue
+
+            # Perform calculation
+            if op == "+":
+                result = sum(numbers)
+            elif op == "-":
+                result = numbers[0]
+                for n in numbers[1:]:
+                    result -= n
+            elif op == "*":
+                result = 1
+                for n in numbers:
+                    result *= n
+            elif op == "/":
+                result = numbers[0]
+                for n in numbers[1:]:
+                    if n == 0:
+                        print("Error: Division by zero.")
+                        result = None
+                        break
+                    result /= n
+            elif op == "**":
+                if len(numbers) == 2:
+                    result = numbers[0] ** numbers[1]
+                else:
+                    print("Power operation requires exactly 2 numbers.")
+                    continue
+
+            # Show result
+            if result is not None:
+                print(f"Result: {result}")
 
     except Exception as e:
-        print(f"Unexpected error: {e}")
+        print(f"An error occurred: {e}")
 
-# Function calling
+# Run calculator
 calculator()
