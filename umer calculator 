@@ -1,0 +1,67 @@
+# Function Definition
+def calculator():
+    print("Standard Calculator")
+    try:
+        while True:
+            # Get the operator
+            op = input("Enter the operator [+,-,*,/,**] or type 'exit' to quit: ")
+            if op.lower().strip() == "exit":
+                print("Exiting calculator")
+                break
+
+            # Valid operators
+            list_op = ['+', '-', '*', '/', '**']
+            if op not in list_op:
+                print("Please enter the correct operator")
+                continue
+
+            # Ask how many numbers
+            try:
+                count = int(input("How many numbers do you want to enter? (at least 2): "))
+                if count < 2:
+                    print("Please enter at least 2 numbers")
+                    continue
+            except ValueError:
+                print("Invalid input. Please enter an integer.")
+                continue
+
+            # Collect numbers using range()
+            numbers = []
+            for i in range(count):
+                while True:
+                    try:
+                        num = float(input(f"Enter number {i+1}: "))
+                        if op == '/' and i > 0 and num == 0:
+                            print("Denominator can't be zero.")
+                            continue
+                        numbers.append(num)
+                        break
+                    except ValueError:
+                        print("Invalid input. Please enter a numeric value.")
+
+            # Perform calculation
+            try:
+                result = numbers[0]
+                for num in numbers[1:]:
+                    if op == '+':
+                        result += num
+                    elif op == '-':
+                        result -= num
+                    elif op == '*':
+                        result *= num
+                    elif op == '/':
+                        result /= num
+                    elif op == '**':
+                        result **= num
+
+                print(f"{' '.join(map(str, numbers))} = {result}")
+            except Exception as e:
+                print(f"Operation failed! ({e})")
+
+            print("Developed By: G/yes")
+
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+
+# Function calling
+calculator()
