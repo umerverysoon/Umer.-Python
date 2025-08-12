@@ -1,1 +1,57 @@
-calculator project python
+def calculator():
+    print("Standard Calculator")
+    try:
+        while True:
+            op = input("Enter the operator [/, *, -, +, **] or type 'exit' to quit: ")
+            if op.lower().strip() == "exit":
+                print("Exiting calculator...")
+                break
+
+            list_op = ['+', '-', '*', '/', '**']
+            if op not in list_op:
+                print("Please enter a correct operator.")
+                continue
+
+            numbers = []
+            while True:
+                number = input("Please enter a number or '=' to calculate: ")
+
+                if number == '=':
+                    if len(numbers) < 2:
+                        print("Please enter at least 2 numbers before calculating.")
+                        continue
+                    break
+
+                try:
+                    num = float(number)
+                    numbers.append(num)
+                except ValueError:
+                    print("Invalid number. Please enter a valid numeric value.")
+
+            # Perform calculation
+            result = numbers[0]
+            for n in numbers[1:]:
+                if op == '+':
+                    result += n
+                elif op == '-':
+                    result -= n
+                elif op == '*':
+                    result *= n
+                elif op == '/':
+                    if n == 0:
+                        print("Error: Division by zero!")
+                        result = None
+                        break
+                    result /= n
+                elif op == '**':
+                    result **= n
+
+            if result is not None:
+                print(f"Result: {result}")
+
+    except Exception as e:
+        print("An error occurred:", e)
+
+
+# Run the calculator
+calculator()
