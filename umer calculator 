@@ -1,21 +1,16 @@
-# Function Definition
+
 def calculator():
     print("Standard Calculator")
     try:
         while True:
-            # Get the operator
             op = input("Enter the operator [+,-,*,/,**] or type 'exit' to quit: ")
             if op.lower().strip() == "exit":
                 print("Exiting calculator")
                 break
-
-            # Valid operators
             list_op = ['+', '-', '*', '/', '**']
             if op not in list_op:
                 print("Please enter the correct operator")
                 continue
-
-            # Ask how many numbers
             try:
                 count = int(input("How many numbers do you want to enter? (at least 2): "))
                 if count < 2:
@@ -24,8 +19,6 @@ def calculator():
             except ValueError:
                 print("Invalid input. Please enter an integer.")
                 continue
-
-            # Collect numbers using range()
             numbers = []
             for i in range(count):
                 while True:
@@ -38,8 +31,6 @@ def calculator():
                         break
                     except ValueError:
                         print("Invalid input. Please enter a numeric value.")
-
-            # Perform calculation
             try:
                 result = numbers[0]
                 for num in numbers[1:]:
@@ -55,22 +46,17 @@ def calculator():
                         result **= num
 
                 print(f"{' '.join(map(str, numbers))} = {result}")
-             # Import
 from tkinter.constants import NUMERIC
 
-# Function definition
 def calculator():
     print("Standard Calculator")
     
     try:
         while True:
-            # Get operator input
             op = input("Enter the operator (/ , * , - , + , ** ) or type 'exit' to quit: ").strip()
             if op.lower() == "exit":
                 print("Exiting calculator...")
                 break
-
-            # Check if operator is valid
             list_op = ["/", "*", "-", "+", "**"]
             if op not in list_op:
                 print("Please enter a valid operator.")
@@ -92,8 +78,6 @@ def calculator():
                 except ValueError:
                     print("Please enter a valid number.")
                     continue
-
-            # Perform calculation
             if op == "+":
                 result = sum(numbers)
             elif op == "-":
@@ -119,12 +103,10 @@ def calculator():
                     print("Power operation requires exactly 2 numbers.")
                     continue
 
-            # Show result
             if result is not None:
                 print(f"Result: {result}")
 
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Run calculator
 calculator()
