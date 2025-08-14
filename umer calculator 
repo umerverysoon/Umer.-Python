@@ -46,8 +46,6 @@ def calculator():
                         result **= num
 
                 print(f"{' '.join(map(str, numbers))} = {result}")
-from tkinter.constants import NUMERIC
-    print("Standard Calculator")
     
     try:
         while True:
