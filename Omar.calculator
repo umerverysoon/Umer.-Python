@@ -45,4 +45,4 @@ def calculator():
                         print("**".join(map(str,numbers))+ f"{result}")
     except Exception  as e:
         print(f"invaid opration! {e}")
-        print("developed by Newfolder")
+        print("developed by omar")
