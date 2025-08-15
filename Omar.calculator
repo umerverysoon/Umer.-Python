@@ -1,0 +1,48 @@
+def calculator():
+    print("standared calculater")
+    try:
+        while True:
+            operator=input("enter the operater (+,-,/,*,** and exit):")
+            if operator == "exit":
+                print("exiting the calclator")
+                break
+            list_OP =['+','-','/','*','**']
+            if operator not in list_op:
+                print("please enter valide oprator") 
+                continue
+            numbers = []
+            while True:
+                number = input("please enter the number or = sign  in order to calculate")
+                if number == "=":
+                    if len(numbers)<2:
+                        print("enter atlist 2 numbers ")
+                        continue
+                    break
+                try:
+                 num = float(number)
+                 numbers.append(num)
+                except valueError:
+                  print("enter the number only!")
+                  continu 
+                if operator =="+":
+                    result = numbers[0]
+                    for number in numbers[1:]:
+                        result = result + number
+                        print("+".join(map(str,numbers))+ f"{result}")
+                elif operator == "-":
+                    result = numbers[0]
+                    for number in numbers[1:]:
+                        result = result + number
+                        print("*".join(map(str,numbers))+ f"{result}")             
+                elif operator == "/":
+                    result = numbers[0]
+                    for number in numbers[1:]:
+                        result = result + number
+                        print("/".join(map(str,numbers))+ f"{result}")
+                elif operator == "**":
+                    result = numbers[0]
+                    for number in numbers[1:]:
+                        print("**".join(map(str,numbers))+ f"{result}")
+    except Exception  as e:
+        print(f"invaid opration! {e}")
+        print("developed by Newfolder")
