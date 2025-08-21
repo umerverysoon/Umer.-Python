@@ -1,0 +1,84 @@
+
+def calculator():
+    print("Standard Calculator")
+   name = input ("Enter user name")
+    try:
+        while True:  
+            op = input("Enter operation (+, -, *, /, sin, cos, tan, sqrt, exit): ").lower()
+
+            if op == "exit":
+                print("Exiting the calculator...")
+                break
+
+            list_op = ["+", "-", "*", "/", "sin", "cos", "tan", "sqrt"]
+            if op not in list_op:
+                print("Please enter a valid operator!")
+                continue
+
+            numbers = []
+            while True:
+                number = input("Enter number (or = to calculate): ")
+                if number == "=":
+                    if len(numbers) < 1:
+                        print("Enter at least 1 number.")
+                        continue
+                    break
+                try:
+                    num = float(number)
+                    numbers.append(num)
+                except ValueError:
+                    print("Enter numbers only!")
+                    continue
+            if op == "+":
+                result = numbers[0]
+                for number in numbers[1:]:
+                    result += number
+                print(" + ".join(map(str, numbers)), "=", result)
+
+            elif op == "-":
+                result = numbers[0]
+                for number in numbers[1:]:
+                    result -= number
+                print(" - ".join(map(str, numbers)), "=", result)
+
+            elif op == "*":
+                result = numbers[0]
+                for number in numbers[1:]:
+                    result *= number
+                print(" * ".join(map(str, numbers)), "=", result)
+
+            elif op == "/":
+                result = numbers[0]
+                try:
+                    for number in numbers[1:]:
+                        result /= number
+                    print(" / ".join(map(str, numbers)), "=", result)
+                except ZeroDivisionError:
+                    print("Error: Division by zero")
+            elif op == "sin":
+                for number in numbers:
+                    print(f"sin({number}) = {math.sin(math.radians(number))}")
+
+            elif op == "cos":
+                for number in numbers:
+                    print(f"cos({number}) = {math.cos(math.radians(number))}")
+
+            elif op == "tan":
+                for number in numbers:
+                    try:
+                        print(f"tan({number}) = {math.tan(math.radians(number))}")
+                    except Exception as e:
+                        print(f"Error: {e}")
+            elif op == "sqrt":
+                for number in numbers:
+                    if number < 0:
+                        print(f"sqrt({number}) = Invalid (negative number)")
+                    else:
+                        print(f"√{number} = {math.sqrt(number)}")
+
+    except Exception as e:
+        print(f"Invalid operation: {e}")
+
+        print("Developed by: MR UMER")
+
+calculator()
