@@ -1,7 +1,7 @@
 
 def calculator():
     print("Standard Calculator")
-   name = input ("Enter user name")
+    print (input ("Enter user name")
     try:
         while True:  
             op = input("Enter operation (+, -, *, /, sin, cos, tan, sqrt, exit): ").lower()
